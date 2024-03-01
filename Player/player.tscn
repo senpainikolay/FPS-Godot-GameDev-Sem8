@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://cayb0mo4yi0d4"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_kvvre"]
+[ext_resource type="Script" path="res://Player/CameraHolder.gd" id="2_5jiod"]
+[ext_resource type="Script" path="res://Player/WeaponHolder.gd" id="3_o16n3"]
+[ext_resource type="Texture2D" uid="uid://c1j2pbxneo0gk" path="res://Weapons/Derringer/Derringer.png" id="4_ykwhc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tjy1b"]
+height = 2.928
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0760062, 0.397281, -0.0175128)
+script = ExtResource("1_kvvre")
+
+[node name="player_collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_tjy1b")
+
+[node name="CameraHolder" type="Node3D" parent="." groups=["Cam"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92979, 0.105709)
+script = ExtResource("2_5jiod")
+
+[node name="WeaponHolder" type="Node3D" parent="CameraHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0380116)
+script = ExtResource("3_o16n3")
+
+[node name="Camera3D" type="Camera3D" parent="CameraHolder"]
+
+[node name="PlayerUI" type="Control" parent="CameraHolder/Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Health" type="Label" parent="CameraHolder/Camera3D/PlayerUI"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 598.0
+offset_right = 73.0
+offset_bottom = 621.0
+text = "Health"
+
+[node name="Ammo" type="Label" parent="CameraHolder/Camera3D/PlayerUI"]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 600.0
+offset_right = 1067.0
+offset_bottom = 623.0
+text = "Ammo"
+
+[node name="Current_Weapon" type="TextureRect" parent="CameraHolder/Camera3D/PlayerUI"]
+layout_mode = 0
+offset_left = 957.0
+offset_top = 522.0
+offset_right = 1157.0
+offset_bottom = 572.0
+texture = ExtResource("4_ykwhc")
+
+[node name="Inventory" type="Label" parent="CameraHolder/Camera3D/PlayerUI"]
+layout_mode = 0
+offset_left = 1008.0
+offset_top = 572.0
+offset_right = 1071.0
+offset_bottom = 595.0
+
+[node name="GunName" type="Label" parent="CameraHolder/Camera3D/PlayerUI"]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 480.0
+offset_right = 1040.0
+offset_bottom = 503.0
+
+[node name="Points" type="Label" parent="CameraHolder/Camera3D/PlayerUI"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 567.0
+offset_right = 60.0
+offset_bottom = 590.0
+
+[node name="TimerLabel" type="Label" parent="CameraHolder/Camera3D/PlayerUI"]
+layout_mode = 0
+offset_left = 1047.0
+offset_top = 22.0
+offset_right = 1087.0
+offset_bottom = 45.0

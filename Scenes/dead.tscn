@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnx2vu5ssgepn"]
+
+[ext_resource type="Script" path="res://Scenes/dead.gd" id="1_6wmfs"]
+[ext_resource type="Texture2D" uid="uid://cxi10cmrml3ay" path="res://Scenes/dd.jpg" id="1_idb5q"]
+
+[node name="Dead" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6wmfs")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.309804, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_idb5q")

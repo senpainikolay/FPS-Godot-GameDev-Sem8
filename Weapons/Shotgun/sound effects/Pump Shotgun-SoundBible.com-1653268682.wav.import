@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://btuthdbnqd4ht"
+path="res://.godot/imported/Pump Shotgun-SoundBible.com-1653268682.wav-dd6a4a6e53d66e5cb2c06a0759b3600b.sample"
+
+[deps]
+
+source_file="res://Weapons/Shotgun/sound effects/Pump Shotgun-SoundBible.com-1653268682.wav"
+dest_files=["res://.godot/imported/Pump Shotgun-SoundBible.com-1653268682.wav-dd6a4a6e53d66e5cb2c06a0759b3600b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

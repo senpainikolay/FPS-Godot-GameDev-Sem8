@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2asni4ass76p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gr2r2"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.847059, 0.0509804, 0.262745, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_6vwtj"]
+material = SubResource("StandardMaterial3D_gr2r2")
+size = Vector2(0.25, 0.25)
+
+[node name="RedDot" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_6vwtj")

@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2e261g1yhxlo"]
+
+[ext_resource type="Script" path="res://Pickups/HealthPickup.gd" id="1_iph3g"]
+[ext_resource type="Texture2D" uid="uid://dfar8cmlaibpn" path="res://Pickups/healthpickup.png" id="2_lrylp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r18ur"]
+radius = 0.819754
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1bkf"]
+albedo_texture = ExtResource("2_lrylp")
+uv1_scale = Vector3(1.8, 1.8, 1.8)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vshne"]
+material = SubResource("StandardMaterial3D_g1bkf")
+
+[sub_resource type="Animation" id="Animation_vme3b"]
+resource_name = "Rotate"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.26573, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2tpvc"]
+_data = {
+"Rotate": SubResource("Animation_vme3b")
+}
+
+[node name="HealthPickup" type="Node3D"]
+script = ExtResource("1_iph3g")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_r18ur")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999848, 0, -0.0174526, 0, 1, 0, 0.0174526, 0, 0.999848, 0, 0, 0)
+mesh = SubResource("BoxMesh_vshne")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Rotate"
+libraries = {
+"": SubResource("AnimationLibrary_2tpvc")
+}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44372, 0)
+omni_range = 7.22315
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
